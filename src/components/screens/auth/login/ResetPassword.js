@@ -19,7 +19,8 @@ import Password from '../../../../assets/icons/auth/password.svg';
 import Passwordopen from '../../../../assets/icons/auth/passwordopen.svg';
 const ResetPassword = ({navigation}) => {
     // state
-    const [password, setPassword] = useState();
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     // console.log(phone);
     const [hide, setHide] = useState(true);
     const [reHide, setReHide] = useState(true);
@@ -28,6 +29,23 @@ const ResetPassword = ({navigation}) => {
     //     console.log(phone);
     //     setPhone('');
     // };
+    const handleResetPassword = () => {
+        if (newPassword === confirmPassword) {
+            // Passwords match, proceed with the password reset logic
+            console.log('updated');
+            setNewPassword('');
+            setConfirmPassword('');
+            setHide(true);
+            setReHide(true);
+        } else {
+            // Display an error message indicating that passwords do not match
+            console.log('not updated,', 'Its not Same Password');
+            setNewPassword('');
+            setConfirmPassword('');
+            setHide(true);
+            setReHide(true);
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -60,6 +78,8 @@ const ResetPassword = ({navigation}) => {
                         placeholder="New Password"
                         placeholderTextColor={'#929292'}
                         secureTextEntry={hide ? true : false}
+                        onChangeText={setNewPassword}
+                        value={newPassword}
                         // value={phone}
                         // onChangeText={number => setPhone(number)}
                     />
@@ -82,6 +102,8 @@ const ResetPassword = ({navigation}) => {
                         placeholder="Re-enter New Password"
                         placeholderTextColor={'#929292'}
                         secureTextEntry={reHide ? true : false}
+                        value={confirmPassword}
+                        onChangeText={setConfirmPassword}
                         // value={phone}
                         // onChangeText={number => setPhone(number)}
                     />
@@ -98,6 +120,7 @@ const ResetPassword = ({navigation}) => {
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity
+                    onPress={handleResetPassword}
                     activeOpacity={0.8}
                     style={styles.verifyButton}>
                     <Text allowFontScaling={false} style={styles.verify}>
