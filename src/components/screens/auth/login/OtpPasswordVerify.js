@@ -5,7 +5,7 @@ import {
     View,
     TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 // contents
 import {SIZE, mainFonts} from '../../../../constants/constants';
@@ -16,8 +16,29 @@ import LeftArrow from '../../../../assets/icons/auth/leftarrow.svg';
 
 const OtpPasswordVerify = ({navigation}) => {
     // state
+    const [timer, setTimer] = useState(30);
+    const [isResendDisabled, setIsResendDisabled] = useState(false);
+    // const OTP = '5454';
     const [otp, setOtp] = useState('');
     // console.log(otp);
+
+    useEffect(() => {
+        if (timer > 0 && isResendDisabled) {
+            const countdown = setInterval(() => {
+                setTimer(timer - 1);
+            }, 1000);
+            return () => {
+                clearInterval(countdown);
+            };
+        } else if (timer === 0) {
+            setIsResendDisabled(false);
+        }
+    }, [timer, isResendDisabled]);
+
+    const handleResendOTP = () => {
+        setIsResendDisabled(true);
+        setTimer(30);
+    };
 
     const handSubmit = () => {
         console.log(otp);
@@ -83,13 +104,22 @@ const OtpPasswordVerify = ({navigation}) => {
                             style={styles.alreadyText}>
                             Don’t recieve code?{' '}
                         </Text>
-                        <TouchableOpacity activeOpacity={0.8}>
-                            <Text
-                                allowFontScaling={false}
-                                style={styles.loginText}>
-                                Resend OTP
+                        {isResendDisabled ? (
+                            <Text style={styles.loginText}>
+                                Resend OTP in: {timer}
                             </Text>
-                        </TouchableOpacity>
+                        ) : (
+                            <TouchableOpacity
+                                activeOpacity={0.8}
+                                onPress={handleResendOTP}
+                                disabled={isResendDisabled}>
+                                <Text
+                                    allowFontScaling={false}
+                                    style={styles.loginText}>
+                                    Resend OTP
+                                </Text>
+                            </TouchableOpacity>
+                        )}
                     </View>
                 </View>
             </View>

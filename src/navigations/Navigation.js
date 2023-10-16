@@ -18,7 +18,7 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="ResetPassword">
+            <Stack.Navigator initialRouteName="OtpPasswordVerify">
                 <Stack.Screen
                     name="SignUp"
                     component={SignUp}
