@@ -13,12 +13,13 @@ import Login from '../components/screens/auth/login/Login';
 import OtpPasswordVerify from '../components/screens/auth/login/OtpPasswordVerify';
 import ResetPassword from '../components/screens/auth/login/ResetPassword';
 import LoginOtp from '../components/screens/auth/login/LoginOtp';
+import OtpVerification from '../components/screens/auth/login/OtpVerification';
 
 const Stack = createNativeStackNavigator();
 const Navigation = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="OtpPasswordVerify">
+            <Stack.Navigator initialRouteName="OtpVerification">
                 <Stack.Screen
                     name="SignUp"
                     component={SignUp}
@@ -62,6 +63,11 @@ const Navigation = () => {
                 <Stack.Screen
                     name="LoginOtp"
                     component={LoginOtp}
+                    options={{headerShown: false}}
+                />
+                <Stack.Screen
+                    name="OtpVerification"
+                    component={OtpVerification}
                     options={{headerShown: false}}
                 />
             </Stack.Navigator>
