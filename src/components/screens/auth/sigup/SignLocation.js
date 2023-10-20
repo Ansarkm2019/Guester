@@ -19,7 +19,7 @@ import Corrent from '../../../../assets/icons/auth/locationcorrent.svg';
 // packages
 import GetLocation from 'react-native-get-location';
 
-const SignLocation = () => {
+const SignLocation = ({navigation}) => {
     // state
     const [place, setPlace] = useState('');
     // console.log(place);
@@ -107,6 +107,7 @@ const SignLocation = () => {
                     onPress={() => {
                         if (place !== undefined && place.trim() !== '') {
                             handSubmit();
+                            navigation.navigate('OnBordingScreen');
                         }
                     }}
                     activeOpacity={0.8}

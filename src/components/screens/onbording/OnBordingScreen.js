@@ -65,7 +65,7 @@ const Item = ({data}) => (
     </View>
 );
 
-const OnBordingScreen = () => {
+const OnBordingScreen = ({navigation}) => {
     const [welcomeListIndex, setWelcomeListIndex] = useState(0);
     const welcomeList = useRef();
     // console.log(welcomeList, '===ref==');
@@ -106,6 +106,9 @@ const OnBordingScreen = () => {
                 <Pagination index={welcomeListIndex} />
                 {welcomeListIndex === 2 ? (
                     <TouchableOpacity
+                        onPress={() => {
+                            navigation.navigate('Login');
+                        }}
                         style={styles.startButton}
                         activeOpacity={0.8}>
                         <Text style={styles.startButtonText}>Get Started</Text>

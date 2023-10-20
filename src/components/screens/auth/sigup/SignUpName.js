@@ -14,7 +14,7 @@ import {SIZE, mainFonts} from '../../../../constants/constants';
 import Logo from '../../../../assets/icons/auth/logo.svg';
 import LeftArrow from '../../../../assets/icons/auth/leftarrow.svg';
 
-const SignUpName = () => {
+const SignUpName = ({navigation}) => {
     // state
     const [name, setName] = useState('');
     // console.log(name);
@@ -58,6 +58,7 @@ const SignUpName = () => {
                     onPress={() => {
                         if (name !== undefined && name.trim() !== '') {
                             handSubmit();
+                            navigation.navigate('SignLocation');
                         }
                     }}
                     activeOpacity={0.8}

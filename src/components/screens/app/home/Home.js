@@ -9,12 +9,13 @@ import {
     ImageBackground,
     ScrollView,
     TouchableOpacity,
+    SafeAreaView,
 } from 'react-native';
 import React from 'react';
 
 // constants
 import {SIZE, mainFonts} from '../../../../constants/constants';
-import Images from './Images';
+// import Images from './Images';
 
 // Icon & Images
 import LocationIcon from '../../../../assets/icons/home/location.svg';
@@ -29,26 +30,31 @@ import CoffeTeaIcon from '../../../../assets/icons/home/coffetea.svg';
 import FoodSpotIcon from '../../../../assets/icons/home/foodspot.svg';
 import HomeBakersIcon from '../../../../assets/icons/home/homebakers.svg';
 
+import Chicking from '../../../../assets/icons/home/chick.svg';
+import Like from '../../../../assets/icons/home/like.svg';
+import LocationGreenIcon from '../../../../assets/icons/home/locationgreen.svg';
+import Kfc from '../../../../assets/icons/home/kfc.svg';
+
 const DATA = [
     {
         id: 1,
         name: 'Rahath restaurant',
         offer: '20%',
-        image: Images.CARD_ONE,
+        image: require('../../../../assets/images/home/rectangle1.jpg'),
         rate: 4.6,
     },
     {
         id: 2,
         name: 'Fresh sea restaurant',
         offer: '10%',
-        image: Images.CARD_ONE,
+        image: require('../../../../assets/images/home/rectangle1.jpg'),
         rate: 4.3,
     },
     {
         id: 3,
         name: 'Malabar restaurant',
         offer: '30%',
-        image: Images.CARD_ONE,
+        image: require('../../../../assets/images/home/rectangle1.jpg'),
         rate: 3.6,
     },
 ];
@@ -84,7 +90,7 @@ const Item = ({item}) => (
 
 const Home = () => {
     return (
-        <View style={styles.homeContainer}>
+        <SafeAreaView style={styles.homeContainer}>
             <StatusBar backgroundColor={'#133149'} />
             <View style={styles.header}>
                 <View style={styles.leftHead}>
@@ -103,7 +109,7 @@ const Home = () => {
                     </Text>
                 </View>
             </View>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.mainContaner}>
                     <View style={styles.topContain}>
                         <Text allowFontScaling={false} style={styles.hiName}>
@@ -212,9 +218,140 @@ const Home = () => {
                             </Text>
                         </TouchableOpacity>
                     </View>
+                    <View style={styles.nearContainer}>
+                        <View style={styles.nearHead}>
+                            <Text style={styles.nearText}>
+                                Nearby Restaurants
+                            </Text>
+                            <TouchableOpacity style={styles.nearAll}>
+                                <Text style={styles.nearAllText}>
+                                    Explore All
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.backImage}>
+                            <ImageBackground
+                                source={require('../../../../assets/images/home/chick.png')}
+                                resizeMode="cover"
+                                style={styles.backgroundImage}>
+                                <View style={styles.topIcons}>
+                                    <View style={styles.chickingIcon}>
+                                        <Chicking
+                                            width={'100%'}
+                                            height={'100%'}
+                                        />
+                                    </View>
+                                    <TouchableOpacity style={styles.likeIcon}>
+                                        <Like width={'100%'} height={'100%'} />
+                                    </TouchableOpacity>
+                                </View>
+                            </ImageBackground>
+                            <View style={styles.bottomNear}>
+                                <View style={styles.spotContain}>
+                                    <Text>Spot Name</Text>
+                                    <Text>1.6 km</Text>
+                                </View>
+                                <View style={styles.placeContain}>
+                                    <View>
+                                        <LocationGreenIcon
+                                            width={20}
+                                            height={20}
+                                        />
+                                    </View>
+                                    <Text>Irinjalakkuda</Text>
+                                </View>
+                                <View style={styles.lastItems}>
+                                    <View style={styles.lastItemsLeft}>
+                                        <View>
+                                            <StarIcon width={20} height={20} />
+                                        </View>
+                                        <Text>4.5 | 32 Reviews</Text>
+                                        <View></View>
+                                        <Text>200Rs for 2</Text>
+                                    </View>
+                                    <TouchableOpacity style={styles.explore}>
+                                        <Text>Explore</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </View>
+                        <TouchableOpacity
+                            activeOpacity={0.7}
+                            style={styles.exploreNear}>
+                            <Text style={styles.exploreNearText}>
+                                Explore All
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.brandContain}>
+                        <View style={styles.nearHead}>
+                            <Text style={styles.nearText}>Top Brands</Text>
+                            <TouchableOpacity style={styles.nearAll}>
+                                <Text style={styles.nearAllText}>View All</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <ScrollView
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={false}>
+                            <View style={styles.brandImageContain}>
+                                <ImageBackground
+                                    source={require('../../../../assets/images/home/kfc.png')}
+                                    resizeMode="cover"
+                                    style={styles.brandImage}>
+                                    <View>
+                                        <View style={styles.brandIcon}>
+                                            <Kfc width={60} height={60} />
+                                        </View>
+                                        <Text style={styles.brandOff}>
+                                            30% off
+                                        </Text>
+                                        <Text style={styles.brandName}>
+                                            on KFC
+                                        </Text>
+                                    </View>
+                                </ImageBackground>
+                            </View>
+                            <View style={styles.brandImageContain}>
+                                <ImageBackground
+                                    source={require('../../../../assets/images/home/kfc.png')}
+                                    resizeMode="cover"
+                                    style={styles.brandImage}>
+                                    <View>
+                                        <View style={styles.brandIcon}>
+                                            <Kfc width={60} height={60} />
+                                        </View>
+                                        <Text style={styles.brandOff}>
+                                            30% off
+                                        </Text>
+                                        <Text style={styles.brandName}>
+                                            on KFC
+                                        </Text>
+                                    </View>
+                                </ImageBackground>
+                            </View>
+                            <View style={styles.brandImageContain}>
+                                <ImageBackground
+                                    source={require('../../../../assets/images/home/kfc.png')}
+                                    resizeMode="cover"
+                                    style={styles.brandImage}>
+                                    <View>
+                                        <View style={styles.brandIcon}>
+                                            <Kfc width={60} height={60} />
+                                        </View>
+                                        <Text style={styles.brandOff}>
+                                            30% off
+                                        </Text>
+                                        <Text style={styles.brandName}>
+                                            on KFC
+                                        </Text>
+                                    </View>
+                                </ImageBackground>
+                            </View>
+                        </ScrollView>
+                    </View>
                 </View>
             </ScrollView>
-        </View>
+        </SafeAreaView>
     );
 };
 
@@ -266,6 +403,7 @@ const styles = StyleSheet.create({
     },
     mainContaner: {
         paddingHorizontal: SIZE.wp('5%'),
+        // paddingVertical: SIZE.wp('40%'),
         paddingVertical: SIZE.wp('7%'),
     },
     topContain: {},
@@ -386,7 +524,7 @@ const styles = StyleSheet.create({
     foodText: {
         marginTop: SIZE.wp('2%'),
         fontSize: SIZE.wp('3%'),
-        lineHeight: SIZE.wp('4'),
+        lineHeight: SIZE.wp('4%'),
         ...Platform.select({
             android: {
                 fontFamily: 'medium',
@@ -394,6 +532,166 @@ const styles = StyleSheet.create({
             ios: {
                 fontFamily: mainFonts.dmMedium,
                 fontWeight: '500',
+            },
+        }),
+    },
+    nearContainer: {},
+    nearHead: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: SIZE.wp('4%'),
+    },
+    nearText: {
+        color: '#133149',
+        fontSize: SIZE.wp('5.5%'),
+        lineHeight: SIZE.wp('7%'),
+        ...Platform.select({
+            android: {
+                fontFamily: 'medium',
+            },
+            ios: {
+                fontFamily: mainFonts.dmMedium,
+                fontWeight: '500',
+            },
+        }),
+    },
+    nearAll: {},
+    nearAllText: {
+        color: '#0FBA12',
+        textDecorationLine: 'underline',
+    },
+    backImage: {
+        height: SIZE.wp('38%'),
+        width: '100%',
+        // borderRadius: 60,
+        // borderWidth: 1,
+        // borderColor: 'red',
+    },
+    backgroundImage: {
+        // height: SIZE.wp('40.5%'),
+        flex: 1,
+        borderRadius: 100,
+    },
+    topIcons: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    chickingIcon: {
+        height: SIZE.wp('30%'),
+        width: SIZE.wp('30%'),
+    },
+    likeIcon: {
+        height: SIZE.wp('8%'),
+        width: SIZE.wp('8%'),
+    },
+    bottomNear: {
+        backgroundColor: '#fff',
+        height: SIZE.wp('30%'),
+        borderRadius: 20,
+        position: 'absolute',
+        bottom: -70,
+        width: '90%',
+        alignSelf: 'center',
+        padding: 15,
+        backgroundColor: '#fff',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 12,
+        },
+        shadowOpacity: 0.58,
+        shadowRadius: 16.0,
+
+        elevation: 24,
+    },
+    spotContain: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    placeContain: {
+        flexDirection: 'row',
+    },
+    lastItems: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    lastItemsLeft: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    explore: {
+        padding: 10,
+        backgroundColor: '#C4FACA',
+        borderRadius: 10,
+    },
+    exploreNear: {
+        marginTop: SIZE.wp('25%'),
+        borderWidth: 2,
+        borderColor: '#0FBA12',
+        alignItems: 'center',
+        paddingVertical: SIZE.wp('3%'),
+        borderRadius: 10,
+    },
+    exploreNearText: {
+        color: '#222222',
+        fontSize: SIZE.wp('3.5%'),
+        lineHeight: SIZE.wp('5%'),
+        ...Platform.select({
+            android: {
+                fontFamily: 'medium',
+            },
+            ios: {
+                fontFamily: mainFonts.dmMedium,
+                fontWeight: '500',
+            },
+        }),
+    },
+    brandContain: {
+        marginTop: SIZE.wp('5%'),
+    },
+    brandImageContain: {
+        width: SIZE.wp('37%'),
+        height: SIZE.wp('46.5%'),
+        marginRight: SIZE.wp('2%'),
+    },
+    brandImage: {
+        // width: SIZE.wp('37%'),
+        // width: SIZE.wp('46.5%'),
+        flex: 1,
+        justifyContent: 'flex-end',
+        padding: 15,
+    },
+    brandIcon: {
+        // height: SIZE.wp('10%'),
+        // width: SIZE.wp('10%'),
+    },
+    brandOff: {
+        color: '#FFFFFF',
+        fontSize: SIZE.wp('5.5%'),
+        lineHeight: SIZE.wp('7%'),
+        ...Platform.select({
+            android: {
+                fontFamily: 'medium',
+            },
+            ios: {
+                fontFamily: mainFonts.dmMedium,
+                fontWeight: '500',
+            },
+        }),
+    },
+    brandName: {
+        color: '#FFFFFF',
+        fontSize: SIZE.wp('3%'),
+        lineHeight: SIZE.wp('4%'),
+        ...Platform.select({
+            android: {
+                fontFamily: 'regular',
+            },
+            ios: {
+                fontFamily: mainFonts.dmRegular,
+                fontWeight: '400',
             },
         }),
     },

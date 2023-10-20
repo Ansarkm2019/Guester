@@ -13,7 +13,7 @@ import {SIZE, mainFonts} from '../../../../constants/constants';
 // images
 import Logo from '../../../../assets/icons/auth/logo.svg';
 
-const LoginOtp = () => {
+const LoginOtp = ({navigation}) => {
     // state
     const [phone, setPhone] = useState('');
     // console.log(phone);
@@ -21,6 +21,7 @@ const LoginOtp = () => {
     const handSubmit = () => {
         console.log(phone);
         setPhone('');
+        navigation.navigate('OtpVerification');
     };
 
     return (

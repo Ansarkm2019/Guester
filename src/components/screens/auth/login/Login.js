@@ -18,7 +18,7 @@ import Google from '../../../../assets/icons/auth/google.svg';
 import Meta from '../../../../assets/icons/auth/bi_meta.svg';
 import Password from '../../../../assets/icons/auth/password.svg';
 import Passwordopen from '../../../../assets/icons/auth/passwordopen.svg';
-const Login = () => {
+const Login = ({navigation}) => {
     // state
     const [phone, setPhone] = useState('');
     // console.log(phone);
@@ -87,7 +87,11 @@ const Login = () => {
                             )}
                         </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.forget}>
+                    <TouchableOpacity
+                        style={styles.forget}
+                        onPress={() => {
+                            navigation.navigate('OtpPasswordVerify');
+                        }}>
                         <Text style={styles.forgetText}>Forget Password?</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -103,6 +107,9 @@ const Login = () => {
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
+                        onPress={() => {
+                            navigation.navigate('LoginOtp');
+                        }}
                         activeOpacity={0.8}
                         style={styles.withOtpButton}>
                         <Text
@@ -155,7 +162,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        paddingTop: SIZE.wp('5.5%'),
+        paddingTop: SIZE.wp('10%'),
         backgroundColor: '#fff',
         paddingHorizontal: SIZE.wp('5%'),
     },

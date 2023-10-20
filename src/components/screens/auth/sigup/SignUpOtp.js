@@ -68,6 +68,7 @@ const SignUpOtp = ({navigation}) => {
                     onPress={() => {
                         if (otp !== undefined && otp.trim() !== '') {
                             handSubmit();
+                            navigation.navigate('SignUpName');
                         }
                     }}
                     activeOpacity={0.8}

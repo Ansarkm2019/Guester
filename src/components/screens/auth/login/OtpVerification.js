@@ -178,6 +178,7 @@ const OtpVerification = ({navigation}) => {
                     <TouchableOpacity
                         onPress={() => {
                             setModalVisible(false);
+                            navigation.navigate('MyTabs');
                         }}
                         style={styles.startArrow}>
                         <StartArrow width={'100%'} height={'100%'} />

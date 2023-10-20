@@ -37,6 +37,7 @@ const ResetPassword = ({navigation}) => {
             setConfirmPassword('');
             setHide(true);
             setReHide(true);
+            navigation.navigate('Login');
         } else {
             // Display an error message indicating that passwords do not match
             console.log('not updated,', 'Its not Same Password');

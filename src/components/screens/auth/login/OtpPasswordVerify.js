@@ -94,12 +94,13 @@ const OtpPasswordVerify = ({navigation}) => {
                     onPress={() => {
                         if (otp !== undefined && otp.trim() !== '') {
                             handSubmit();
+                            navigation.navigate('ResetPassword');
                         }
                     }}
                     activeOpacity={0.8}
                     style={styles.verifyButton}>
                     <Text allowFontScaling={false} style={styles.verify}>
-                        Signup
+                        Reset Password
                     </Text>
                 </TouchableOpacity>
                 <View style={styles.already}>
